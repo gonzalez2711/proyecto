@@ -89,3 +89,11 @@ $casilla->delete();
 return redirect('casilla');
 }
 } //--- end class
+
+public function generatepdf()
+    {
+      $casillas = Casilla::all();
+      // print_r($casillas);
+        $pdf = PDF::loadView('casilla/vista', ['casillas'=>$casillas]);
+        return $pdf->stream('casilla.pdf');
+    }
